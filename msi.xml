@@ -1,14 +1,14 @@
 <package
   id='&id;'
   name='&name;'
-  revision='%PKG_VERSION%-1'
+  revision='&version;-2'
   reboot='false'
   priority='10'
   >
 
   <variable name='PKG_VERSION' value='&version;' />
-  <variable name='PKG_SOURCE' value='&msi_32bit;' architecture='x86' />
-  <variable name='PKG_SOURCE' value='&msi_64bit;' architecture='x64' />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\&msi_32bit;' architecture='x86' />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\&msi_64bit;' architecture='x64' />
 
   <check type='logical' condition='or'>
     <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_32bit;' value='%PKG_VERSION%' />
