@@ -11,8 +11,8 @@
   <variable name='PKG_SOURCE' value='&msi_64bit;' architecture='x64' />
 
   <check type='logical' condition='or'>
-    <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_32bit' value='%PKG_VERSION%' />
-    <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_64bit' value='%PKG_VERSION%' />
+    <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_32bit;' value='%PKG_VERSION%' />
+    <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_64bit;' value='%PKG_VERSION%' />
   </check>
 
   <install cmd='msiexec /quiet /norestart /i "%PKG_SOURCE%"'>
