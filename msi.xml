@@ -15,7 +15,7 @@
     <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_64bit;' value='%PKG_VERSION%' />
   </check>
 
-  <install cmd='msiexec /quiet /norestart /i "%PKG_SOURCE%"'>
+  <install cmd='msiexec /quiet /norestart /i "%PKG_SOURCE%" /lv* "%TEMP%\wpkg-&id;-&version;.log"'>
     <exit code='3010' reboot='false' />
   </install>
   <upgrade   include='install' />
