@@ -1,7 +1,7 @@
 <package
   id='&id;'
   name='&name;'
-  revision='&version;-3'
+  revision='&version;-4'
   reboot='false'
   priority='10'
   >
@@ -15,7 +15,9 @@
     <check type='uninstall' condition='versiongreaterorequal' path='&uninstall_64bit;' value='%PKG_VERSION%.*' />
   </check>
 
-  <install cmd='msiexec /quiet /norestart /i "%PKG_SOURCE%" /lv* "%TEMP%\wpkg-&id;-&version;.log" %WPKG_&name;_PARAMS% &cmdline;'>
+  <install
+    cmd='msiexec /quiet /norestart /i "%PKG_SOURCE%" /lv* "%TEMP%\wpkg-&id;-&version;.log" &cmdline;'
+    timeout='600'>
     <exit code='3010' reboot='false' />
   </install>
   <upgrade   include='install' />
