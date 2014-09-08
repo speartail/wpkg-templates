@@ -1,0 +1,29 @@
+<package
+    id='&id;'
+    name='MARK Communication System 5'
+    revision='&version;-&revision;'
+    reboot='false'
+    priority='10'>
+
+  <depends package-id="dotnet4" />
+
+  <variable name='PKG_VERSION'     value='&version;' />
+  <variable name='PKG_SOURCE'      value="%SOFTWARE%\Mark5\%version%\%PROCESSOR_ARCHITECTURE%\Mark5Install.msi" />
+  <variable name='PKG_DESTINATION' value="%PROGRAMFILES%\Mark5" />
+
+  <check type="file" condition="versiongreaterorequal" path="%PKG_DESTINATION%\Mark5.exe" value="%version%" />
+
+  <install cmd='msiexec /quiet /norestart /x "%PKG_SOURCE%"'><exit code='any' /></install>
+  <install cmd='msiexec /quiet /norestart /i "%PKG_SOURCE%" /lv* "%TEMP%\wpkg-&id;-&version;.log"'
+           timeout='600'><exit code='3010' reboot='false' /></install>
+  <install cmd='%COMSPEC% /C mkdir "%PKG_DESTINATION%"'><exit code='any' /></install>
+  <install cmd='%COMSPEC% /C copy /Y "%SOFTWARE%\Mark5\ConnectionInfo.xml" "%PKG_DESTINATION%"' />
+
+  <upgrade   include='install' />
+  <downgrade include='install' />
+
+  <remove cmd='msiexec /quiet /norestart /x "%PKG_SOURCE%"'>
+    <exit code='1605' />
+    <exit code='3010' reboot='false' />
+  </remove>
+</package>
