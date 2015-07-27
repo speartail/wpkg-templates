@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  NOTES
+  1) https://support.microsoft.com/en-us/kb/2186281
+  1) Upgrades do not work as running setup.exe when it's already installed WILL result in a prompt
+-->
+
+<packages>
+
+<package
+  id="office_&id;_&bitness;bit"
+  name="&name; - &bitness; bit"
+  revision="&revision;"
+  reboot="false"
+  priority="10">
+
+  <!-- {BRMMmmmm-PPPP-LLLL-p000-D000000FF1CE} -->
+
+  <variable name="GUID_VL"  value="90&guid_major;0000-&guid_product;-0000-0000-0000000FF1CE" architecture="x86" />
+  <variable name="GUID_VL"  value="90&guid_major;0000-&guid_product;-0000-1000-0000000FF1CE" architecture="x64" />
+  <variable name="GUID_OEM" value="91&guid_major;0000-&guid_product;-0000-0000-0000000FF1CE" architecture="x86" />
+  <variable name="GUID_OEM" value="91&guid_major;0000-&guid_product;-0000-1000-0000000FF1CE" architecture="x64" />
+
+  <variable name='INSTALL_DIR' value="%PROGRAMFILES%\Microsoft Office\Office&guid_major;"      architecture='x86' />
+  <variable name='INSTALL_DIR' value="%PROGRAMFILES(x86)%\Microsoft Office\Office&guid_major;" architecture='x64' />
+
+  <check type="uninstall" condition="exists" path="&name;" />
+
+  <install cmd='%SOFTWARE%\Microsoft\&path;\&bitness;bit\setup.exe'>
+    <exit code="1641" />
+    <exit code="3010" />
+  </install>
+
+  <!--
+  <update cmd='cscript "%INSTALL_DIR%\ospp.vbs" /act' />
+  <downgrade include='update' />
+  -->
+
+  <remove  cmd='%COMSPEC% /C FOR %G IN (%GUID_VL% %GUID_OEM%) DO msiexec %MSI% /x{%G%}'>
+    <exit code="1605" />
+    <exit code="1615" />
+    <exit code="3010" />
+  </remove>
+
+</package>
+
+</packages>
