@@ -1,16 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!--
-  NOTES
-  1) https://support.microsoft.com/en-us/kb/2186281
-  1) Upgrades do not work as running setup.exe when it's already installed WILL result in a prompt
--->
-
-<packages>
-
 <package
-  id="office_&id;_&bitness;bit"
-  name="&name; - &bitness; bit"
+  id="ms_office_&id;"
+  name="&name;"
   revision="&revision;"
   reboot="false"
   priority="10">
@@ -27,7 +17,7 @@
 
   <check type="uninstall" condition="exists" path="&name;" />
 
-  <install cmd='%SOFTWARE%\Microsoft\&path;\&bitness;bit\setup.exe'>
+  <install cmd='%SOFTWARE%\Microsoft\&path;\%PROCESSOR_ARCHITECTURE%\setup.exe'>
     <exit code="1641" />
     <exit code="3010" />
   </install>
@@ -45,4 +35,8 @@
 
 </package>
 
-</packages>
+<!--
+  NOTES
+  1) https://support.microsoft.com/en-us/kb/2186281
+  1) Upgrades do not work as running setup.exe when it's already installed WILL result in a prompt
+-->
