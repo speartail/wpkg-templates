@@ -1,3 +1,8 @@
+<!--
+
+1) You must set ANSYS_LICENSE_SERVER via Group Policy (or similar)
+
+-->
 <package
   id="ansys_&version;"
   name="ANSYS &version;"
