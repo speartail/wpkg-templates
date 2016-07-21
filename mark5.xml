@@ -1,7 +1,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-4&revision;'
+    revision='&version;-3&revision;'
     reboot='false'
     priority='10'>
 
