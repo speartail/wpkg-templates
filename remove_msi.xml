@@ -1,0 +1,19 @@
+<package
+  id='&id;'
+  name='&name;'
+  revision='&version;-&revision;'
+  reboot='false'
+  priority='10'
+  execute='once'
+  >
+
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\&msi_32bit;' architecture='x86' />
+  <variable name='PKG_SOURCE' value='%SOFTWARE%\&msi_64bit;' architecture='x64' />
+
+  <install
+    cmd='msiexec /quiet /norestart /x "%PKG_SOURCE%" /lv* "%TEMP%\wpkg-&id;-&version;.log" &cmdline;'
+    timeout='600'>
+    <exit code='3010' reboot='false' />
+  </install>
+
+</package>
