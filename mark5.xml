@@ -1,7 +1,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-4&revision;'
+    revision='&version;-5&revision;'
     reboot='false'
     priority='10'>
 
@@ -33,6 +33,6 @@
   </remove>
 
   <commands>
-    <command type='copy' cmd='%COMSPEC% /c echo f | if not exist %PKG_TARGET% xcopy %PKG_SOURCE% %PKG_TARGET%'></command>
+    <command type='copy' cmd='%COMSPEC% /c if not exist %PKG_TARGET% copy %PKG_SOURCE% %PKG_TARGET%'></command>
   </commands>
 </package>
