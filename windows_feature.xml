@@ -1,0 +1,13 @@
+<package
+    id='&id;'
+    name='&name;'
+    revision='&revision;'
+    reboot='false'
+    priority='10'>
+
+  <check type='execute' condition='exitcodeequalto' value='0'
+         path='dism /online /get-featureinfo /featurename:&feature; | find "State : Enabled"' />
+
+  <install cmd='dism /online /enable-feature:&feature; /norestart' />
+  <remove  cmd='dism /online /disable-feature:&feature; /norestart' />
+</package>
