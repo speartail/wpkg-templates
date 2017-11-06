@@ -1,9 +1,14 @@
+<!-- Mark5 needs to be installed as one of the first things
+     so people can get to email quickly after an upgrade
+     instead of having to wait for lots of non-critical
+     software to install -->
+
 <package
     id='&id;'
     name='MARK Communication System 5'
     revision='&version;-6&revision;'
     reboot='false'
-    priority='10'>
+    priority='50'> <!-- see above -->
 
   <depends package-id="dotnet4" />
   <depends package-id="dotnet46" />
