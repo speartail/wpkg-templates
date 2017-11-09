@@ -6,12 +6,11 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-6&revision;'
+    revision='&version;-7&revision;'
     reboot='false'
     priority='50'> <!-- see above -->
 
-  <depends package-id="dotnet4" />
-  <depends package-id="dotnet46" />
+  <depends package-id='dotnet46' os='windows 7' />
 
   <variable name='PKG_VERSION'     value='&version;' />
   <variable name='PKG_SOURCE'      value="%SOFTWARE%\Mark5\%PKG_VERSION%\%PROCESSOR_ARCHITECTURE%\Mark5Install.msi" />
