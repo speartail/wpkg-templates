@@ -22,7 +22,7 @@
   <install include='copy' />
   <install include='kill' />
   <install include='remove' />
-  <install cmd='%COMSPEC% /c IF NOT EXIST "%PKG_DESTINATION%" MKDIR %PKG_DESTINATION% >nul' timeout='30' />
+  <install cmd='%COMSPEC% /c IF NOT EXIST "%PKG_DESTINATION%" MKDIR "%PKG_DESTINATION%" >nul' timeout='30' />
   <install cmd='msiexec /quiet /norestart /i "%PKG_TARGET%" /lv* "%TEMP%\wpkg-&id;.log"'
            timeout='1200'>
     <exit code='3010' reboot='false' />
