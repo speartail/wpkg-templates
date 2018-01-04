@@ -6,7 +6,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-9&revision;'
+    revision='&version;-10&revision;'
     reboot='false'
     priority='50'> <!-- see above -->
 
@@ -31,8 +31,12 @@
     <exit code='4' />
   </install>
 
-  <upgrade   include='install' />
-  <downgrade include='install' />
+  <!--
+       We never upgrade/downgrade as it is a new package every time.
+
+       <upgrade   include='install' />
+       <downgrade include='install' />
+  -->
 
   <remove include='kill' />
   <!--
