@@ -8,10 +8,6 @@
   <check type='execute' condition='exitcodeequalto' value='0'
          path='%comspec% /C schtasks /Query /TN &id; | find /C "&id;" >NUL' />
 
-  <!--
-      1. do not use /limitaccess as it cannot access an UNC
-      2. no trailing slash at the source param
-  -->
   <install cmd='schtasks /Create /SC &frequency; /TN &id; /TR "&command;" /ST &time; /f' />
   <remove  cmd='schtasks /Delete                 /TN &id;                            /f' />
 </package>
