@@ -1,14 +1,17 @@
 <package
     id='&id;'
     name='&name;'
-    revision='&revision;-5'
+    revision='&revision;-6'
     reboot='false'
     priority='10'>
+
+  <variable name='os' value='7'  os='windows 7' />
+  <variable name='os' value='10' os='windows 10' />
 
   <check type='execute' condition='exitcodeequalto' value='0'
          path='%comspec% /C dism /online /get-featureinfo /featurename:&feature; | find /C "State : Enabled" >NUL' />
 
-  <install cmd='dism /online /enable-feature:&feature; /limitaccess /norestart /source:"%SOFTWARE%\Microsoft\WindowsFeatures\7\"'  timeout='600' os='windows 7' />
-  <install cmd='dism /online /enable-feature:&feature; /limitaccess /norestart /source:"%SOFTWARE%\Microsoft\WindowsFeatures\10\"' timeout='600' os='windows 10' />
+  <!-- do not use /limitaccess as it cannot access an UNC -->
+  <install cmd='dism /online /enable-feature:&feature;  /norestart /source:"%SOFTWARE%\Microsoft\WindowsFeatures\%os%\"' timeout='600' />
   <remove  cmd='dism /online /disable-feature:&feature; /norestart' />
 </package>
