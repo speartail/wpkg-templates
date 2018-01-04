@@ -6,7 +6,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-10&revision;'
+    revision='&version;-11&revision;'
     reboot='false'
     priority='50'> <!-- see above -->
 
@@ -46,7 +46,7 @@
 
   <commands>
     <command type='copy' cmd='%comspec% /c if not exist %PKG_TARGET% xcopy /d /y %PKG_SOURCE% %PKG_TARGET%'></command>
-    <command type='kill' cmd='taskkill /f /im mark5.exe'><exit code='any' /></command>
+    <command type='kill' cmd='%comspec% /c for %f in (mark5 mark5setup) do taskkill /f /im %f.exe >NUL'><exit code='any' /></command>
     <command type='zap'  cmd='msiexec %MSI% /x "%PKG_TARGET%' timeout='300'>
       <exit code='1605' />
       <exit code='3010' reboot='false' />
