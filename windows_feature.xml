@@ -1,11 +1,12 @@
 <package
     id='&id;'
     name='&name;'
-    revision='&revision;-7'
+    revision='&revision;-8'
     reboot='false'
     priority='10'>
 
   <variable name='os' value='7'  os='windows 7' />
+  <variable name='os' value='8'  os='windows 8' />
   <variable name='os' value='10' os='windows 10' />
 
   <check type='execute' condition='exitcodeequalto' value='0'
