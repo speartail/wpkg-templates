@@ -1,7 +1,7 @@
 <package
     id='&id;'
     name='&name;'
-    revision='&revision;-6'
+    revision='&revision;-7'
     reboot='false'
     priority='10'>
 
@@ -11,7 +11,10 @@
   <check type='execute' condition='exitcodeequalto' value='0'
          path='%comspec% /C dism /online /get-featureinfo /featurename:&feature; | find /C "State : Enabled" >NUL' />
 
-  <!-- do not use /limitaccess as it cannot access an UNC -->
-  <install cmd='dism /online /enable-feature:&feature;  /norestart /source:"%SOFTWARE%\Microsoft\WindowsFeatures\%os%\"' timeout='600' />
+  <!--
+      1. do not use /limitaccess as it cannot access an UNC
+      2. no trailing slash at the source param
+  -->
+  <install cmd='dism /online /enable-feature:&feature;  /norestart /source:"%SOFTWARE%\Microsoft\WindowsFeatures\%os%"' timeout='600' />
   <remove  cmd='dism /online /disable-feature:&feature; /norestart' />
 </package>
