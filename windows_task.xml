@@ -1,13 +1,13 @@
 <package
     id='&id;'
     name='&name;'
-    revision='&revision;-1'
+    revision='&revision;-2'
     reboot='false'
     priority='10'>
 
   <check type='execute' condition='exitcodeequalto' value='0'
          path='%comspec% /C schtasks /Query /TN &id; | find /C "&id;" >NUL' />
 
-  <install cmd='schtasks /Create /SC &frequency; /TN &id; /TR "&command;" /ST &time; /f' />
+  <install cmd='schtasks /Create /SC &frequency; /TN &id; /TR "&command;" /ST &time; /f /rl HIGHEST' />
   <remove  cmd='schtasks /Delete                 /TN &id;                            /f' />
 </package>
