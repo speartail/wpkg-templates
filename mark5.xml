@@ -6,7 +6,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-13&revision;'
+    revision='&version;-14&revision;'
     reboot='false'
     priority='50'> <!-- see above -->
 
@@ -46,7 +46,7 @@
 
   <commands>
     <!-- notice the * at the end - it is to force xcopy to treat it as a file -->
-    <command type='copy' cmd='%comspec% /c if not exist %PKG_TARGET% xcopy /d /y %PKG_SOURCE% %PKG_TARGET%*'></command>
+    <command type='copy' cmd='%comspec% /c if not exist %PKG_TARGET% xcopy /q /d /y %PKG_SOURCE% %PKG_TARGET%* >NUL'></command>
     <command type='kill' cmd='%comspec% /c for %f in (mark5 mark5setup) do taskkill /f /im %f.exe >NUL'><exit code='any' /></command>
     <command type='zap'  cmd='msiexec %MSI% /x "%PKG_TARGET%' timeout='300'>
       <exit code='1605' />
