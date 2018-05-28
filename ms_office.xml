@@ -1,7 +1,7 @@
 <package
   id="ms_office_&id;"
   name="&name;"
-  revision="&revision;-2"
+  revision="&revision;-3"
   reboot="false"
   priority="10">
 
@@ -27,10 +27,8 @@
   <downgrade include='update' />
   -->
 
-  <remove cmd='%COMSPEC% /C FOR %G IN (%GUID_VL% %GUID_OEM%) DO (msiexec %MSI% /x{%G})'>
-    <exit code="1605" />
-    <exit code="1615" />
-    <exit code="3010" />
+  <remove cmd='"%SOFTWARE%\Microsoft\OfficeUninstall\uninstall_ms_office.cmd" > %TEMP%\wpkg-ms_office_cleanup.txt' timeout='1800'>
+    <exit code='any' />
   </remove>
 
 </package>
