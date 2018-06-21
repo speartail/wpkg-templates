@@ -6,7 +6,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-14&revision;'
+    revision='&version;-15&revision;'
     reboot='false'
     priority='50'> <!-- see above -->
 
@@ -38,10 +38,13 @@
        <downgrade include='install' />
   -->
 
-  <remove include='kill' />
   <!--
-      Because we use different profiles for different versions, mark5 will be uninstalled every time there is an update.
-      Instead of simply don't allow uninstalling.
+      Because we use different profiles for different versions, mark5 will be
+      uninstalled every time there is an update. Instead of simply don't allow
+      uninstalling and don't do anything for remove (no kill) as wpkg will
+      otherwise complain that it is still installed.
+
+      <remove include='kill' />
   -->
 
   <commands>
