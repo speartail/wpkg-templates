@@ -6,7 +6,7 @@
 <package
     id='&id;'
     name='MARK Communication System 5'
-    revision='&version;-17&revision;'
+    revision='&version;-18&revision;'
     reboot='false'
     priority='50'> <!-- see above -->
 
@@ -17,7 +17,8 @@
   <variable name='PKG_DESTINATION' value="%PROGRAMFILES%\Mark5" />
   <variable name='PKG_TARGET'      value="%ProgramData%\Mark5_%PKG_VERSION%_Mark5Install.msi" />
 
-  <check type="uninstall" condition="exists" path="Mark5 %version%" />
+  <check type="file" condition="versionequalto" path="%PKG_DESTINATION%\Mark5.exe" value="%version%" />
+
 
   <install include='copy' />
   <install include='kill' />
